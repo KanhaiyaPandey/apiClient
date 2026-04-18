@@ -1,0 +1,31 @@
+{
+  "extends": "@apiclient/config/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@apiclient/utils": [
+        "../../packages/utils/src/index.ts"
+      ],
+      "@apiclient/ui": [
+        "../../packages/ui/src/index.ts"
+      ],
+      "@apiclient/hooks": [
+        "../../packages/hooks/src/index.ts"
+      ]
+    },
+    "noEmit": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

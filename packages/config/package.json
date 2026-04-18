@@ -1,0 +1,14 @@
+{
+  "name": "@apiclient/config",
+  "version": "1.0.0",
+  "private": true,
+  "exports": {
+    "./eslint": "./eslint/index.js",
+    "./tsconfig": "./tsconfig",
+    "./tsconfig/*": "./tsconfig/*",
+    "./tailwind": "./tailwind/index.js"
+  },
+  "scripts": {
+    "lint": "echo 'No lint for config package'"
+  }
+}
