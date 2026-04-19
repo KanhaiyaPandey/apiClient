@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { proxyRequestSchema } from '../src/validators/proxy';
+import { describe, it, expect } from 'vitest';
+import { proxyRequestSchema } from '../validators/proxy';
 
 describe('proxyRequestSchema', () => {
   it('validates a minimal GET request', () => {

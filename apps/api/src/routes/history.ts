@@ -11,7 +11,7 @@ const history: HistoryEntry[] = [];
 // GET /api/history
 historyRouter.get('/', (req: Request, res: Response) => {
   const limit = Math.min(parseInt(req.query.limit as string) || 50, MAX_HISTORY);
-  res.json({ data: history.slice(-limit).reverse() });
+  return res.json({ data: history.slice(-limit).reverse() });
 });
 
 // POST /api/history
@@ -24,13 +24,13 @@ historyRouter.post('/', (req: Request, res: Response) => {
   };
   history.push(entry);
   if (history.length > MAX_HISTORY) history.shift();
-  res.status(201).json({ data: entry });
+  return res.status(201).json({ data: entry });
 });
 
 // DELETE /api/history  — clear all
 historyRouter.delete('/', (_req: Request, res: Response) => {
   history.length = 0;
-  res.status(204).send();
+  return res.status(204).send();
 });
 
 // DELETE /api/history/:id
@@ -38,5 +38,5 @@ historyRouter.delete('/:id', (req: Request, res: Response) => {
   const idx = history.findIndex((e) => e.id === req.params.id);
   if (idx === -1) return res.status(404).json({ error: 'Entry not found' });
   history.splice(idx, 1);
-  res.status(204).send();
+  return res.status(204).send();
 });

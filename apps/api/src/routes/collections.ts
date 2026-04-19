@@ -26,7 +26,7 @@ const upsertRequestSchema = z.object({
 
 // GET /api/collections
 collectionsRouter.get('/', (_req: Request, res: Response) => {
-  res.json({ data: Array.from(store.values()) });
+  return res.json({ data: Array.from(store.values()) });
 });
 
 // POST /api/collections
@@ -43,12 +43,12 @@ collectionsRouter.post('/', (req: Request, res: Response) => {
       updatedAt: now,
     };
     store.set(collection.id, collection);
-    res.status(201).json({ data: collection });
+    return res.status(201).json({ data: collection });
   } catch (err) {
     if (err instanceof ZodError) {
       return res.status(422).json({ error: 'Validation failed', details: err.errors });
     }
-    res.status(400).json({ error: 'Bad request' });
+    return res.status(400).json({ error: 'Bad request' });
   }
 });
 
@@ -56,7 +56,7 @@ collectionsRouter.post('/', (req: Request, res: Response) => {
 collectionsRouter.get('/:id', (req: Request, res: Response) => {
   const col = store.get(req.params.id);
   if (!col) return res.status(404).json({ error: 'Collection not found' });
-  res.json({ data: col });
+  return res.json({ data: col });
 });
 
 // PATCH /api/collections/:id
@@ -71,14 +71,14 @@ collectionsRouter.patch('/:id', (req: Request, res: Response) => {
     updatedAt: new Date().toISOString(),
   };
   store.set(col.id, updated);
-  res.json({ data: updated });
+  return res.json({ data: updated });
 });
 
 // DELETE /api/collections/:id
 collectionsRouter.delete('/:id', (req: Request, res: Response) => {
   if (!store.has(req.params.id)) return res.status(404).json({ error: 'Collection not found' });
   store.delete(req.params.id);
-  res.status(204).send();
+  return res.status(204).send();
 });
 
 // POST /api/collections/:id/requests  — add a request to a collection
@@ -101,12 +101,12 @@ collectionsRouter.post('/:id/requests', (req: Request, res: Response) => {
       updatedAt: now,
     };
     store.set(col.id, updated);
-    res.status(201).json({ data: request });
+    return res.status(201).json({ data: request });
   } catch (err) {
     if (err instanceof ZodError) {
       return res.status(422).json({ error: 'Validation failed', details: err.errors });
     }
-    res.status(400).json({ error: 'Bad request' });
+    return res.status(400).json({ error: 'Bad request' });
   }
 });
 
@@ -121,5 +121,5 @@ collectionsRouter.delete('/:id/requests/:requestId', (req: Request, res: Respons
     updatedAt: new Date().toISOString(),
   };
   store.set(col.id, updated);
-  res.status(204).send();
+  return res.status(204).send();
 });
