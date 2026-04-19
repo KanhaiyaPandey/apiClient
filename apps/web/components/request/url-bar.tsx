@@ -1,6 +1,6 @@
 'use client';
 
-import { Send, X, Loader2 } from 'lucide-react';
+import { Send, X } from 'lucide-react';
 import { useTabsStore } from '@/store/tabs.store';
 import { useRequest } from '@/hooks/useRequest';
 import { Button, cn } from '@apiclient/ui';

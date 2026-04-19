@@ -6,9 +6,8 @@ import { executeRequest } from '@/lib/api-client';
 import {
   resolveRequest,
   headersToRecord,
-  buildUrl,
 } from '@apiclient/utils';
-import type { ApiRequest, ProxyRequest } from '@apiclient/utils';
+import type { ProxyRequest } from '@apiclient/utils';
 
 export function useRequest() {
   const abortControllerRef = useRef<AbortController | null>(null);

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, Clock, Settings, ChevronRight, ChevronDown, Plus, Trash2, FolderPlus } from 'lucide-react';
+import { BookOpen, Clock, ChevronRight, ChevronDown, Plus, Trash2, FolderPlus } from 'lucide-react';
 import { useCollectionsStore } from '@/store/collections.store';
 import { useHistoryStore } from '@/store/history.store';
 import { useTabsStore } from '@/store/tabs.store';

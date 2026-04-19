@@ -6,7 +6,6 @@ import { cn } from '@apiclient/ui';
 
 export function EnvSelector() {
   const { environments, activeEnvId, setActiveEnvironment } = useEnvStore();
-  const active = environments.find((e) => e.id === activeEnvId);
 
   return (
     <div className="relative">
